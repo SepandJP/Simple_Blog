@@ -107,7 +107,7 @@ if (isset($error))
     <form method="post">
         <label for="inTitle">Title
             <br />
-            <input type="text" id="inTitle" name="postTitle" value="">
+            <input type="text" id="inTitle" name="postTitle">
         </label>
 
         <br />
