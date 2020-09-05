@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
 
     // todo in this text editor if <textarea> empty in $_POST type <br>
     //very basic validation
-    if($postTitle == ''){
+    if($postTitle == '' || $postTitle == '<br>'){
         $error[] = 'Please enter the title.';
     }
 
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
         $error[] = 'Please enter the description.';
     }
 
-    if($postCont == '' || $postDesc == '<br>'){
+    if($postCont == '' || $postCont == '<br>'){
         $error[] = 'Please enter the content.';
     }
 
@@ -107,20 +107,20 @@ if (isset($error))
     <form method="post">
         <label for="inTitle">Title
             <br />
-            <input type="text" id="inTitle" name="postTitle">
+            <input type="text" id="inTitle" name="postTitle" value="<?php if (isset($error)){ echo $_POST['postTitle'];}?>">
         </label>
 
         <br />
         <br />
 
         <label for="inDesc">Description
-            <textarea id="inDesc" name="postDesc" cols="60" rows="10"></textarea>
+            <textarea id="inDesc" name="postDesc" cols="60" rows="10"><?php if (isset($error)){ echo $_POST['postDesc'];}?></textarea>
         </label>
 
         <br />
 
         <label>Content
-            <textarea id="inCont" name="postCont" cols="60" rows="10"></textarea>
+            <textarea id="inCont" name="postCont" cols="60" rows="10"><?php if (isset($error)){ echo $_POST['postCont'];}?></textarea>
         </label>
 
         <br />

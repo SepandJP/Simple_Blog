@@ -42,6 +42,7 @@ if (isset($_GET['action']))
 }
 ?>
 
+<p><a href="add_post.php">Add new Post</a></p>
 
 <div>
     <table>
@@ -86,7 +87,6 @@ if (isset($_GET['action']))
     </table>
 </div>
 
-<p><a href="add_post.php">Add new Post</a></p>
 
 <script type="text/javascript">
     function delPost(id, title) {

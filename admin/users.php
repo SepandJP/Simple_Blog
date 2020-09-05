@@ -49,6 +49,7 @@ if (isset($_GET['action']))
 <div>
     <table>
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Action</th>
@@ -63,7 +64,6 @@ try {
 
     while ($members = $result->fetch(PDO::FETCH_ASSOC))
     {
-        echo '<tr>';
         echo '<td>'.$members['memberID'].'</td>';
         echo '<td>'.$members['username'].'</td>';
         echo '<td>'.$members['email'].'</td>';
@@ -80,7 +80,7 @@ try {
             <?php
                 if ($members['memberID'] != 1)
             { ?>
-              | <a href="javascript:delUser(<?php echo $members['memberID'];?>,<?php echo $members['username'];?>)">Delete</a>
+              | <a href="javascript:delUser(<?php echo $members['memberID'];?>,'<?php echo $members['username'];?>')">Delete</a>
             <?php } ?>
         </td>
 
