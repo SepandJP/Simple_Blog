@@ -21,38 +21,5 @@ try {
 //set timezone
 date_default_timezone_set('Asia/Tehran');
 
-//spl_autoload_register('my_autoloader');
-
-/*
-load classes as needed
-use Autoloading Classes
-Reference: https://ayousefi.ir/autoloading-in-php-%D8%A7%D8%AA%D9%88%D9%84%D9%88%D8%AF%DB%8C%D9%86%DA%AF-%D8%AF%D8%B1-php/
-*/
-/*
-function __autoload($class)
-{
-    $class = strtolower($class);
-
-    //if call from within /assets adjust the path
-    $classpath = 'classes/'.$class . '.php';
-    if ( file_exists($classpath)) {
-        require_once $classpath;
-    }
-
-    //if call from within admin adjust the path
-    $classpath = '../classes/'.$class . '.php';
-    if ( file_exists($classpath)) {
-        require_once $classpath;
-    }
-
-    //if call from within admin adjust the path
-    $classpath = '../../classes/'.$class . '.php';
-    if ( file_exists($classpath)) {
-        require_once $classpath;
-    }
-
-}
-*/
-
 
 $user = new class_user($db);
