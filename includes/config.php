@@ -2,6 +2,9 @@
 ob_start();
 session_start();
 
+//for Auto loading classes
+require '../classes/Autoload.php';
+
 //connect to database
 define('DB_SERVER','127.0.0.1');
 define('DB_USER','root');
@@ -20,8 +23,12 @@ date_default_timezone_set('Asia/Tehran');
 
 //spl_autoload_register('my_autoloader');
 
-
-//load classes as needed
+/*
+load classes as needed
+use Autoloading Classes
+Reference: https://ayousefi.ir/autoloading-in-php-%D8%A7%D8%AA%D9%88%D9%84%D9%88%D8%AF%DB%8C%D9%86%DA%AF-%D8%AF%D8%B1-php/
+*/
+/*
 function __autoload($class)
 {
     $class = strtolower($class);
@@ -45,5 +52,7 @@ function __autoload($class)
     }
 
 }
+*/
+
 
 $user = new class_user($db);
