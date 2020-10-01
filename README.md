@@ -6,13 +6,13 @@ It's a simple blog from scratch with PHP. This project is developing and soon ad
 یک وبلاگ ساده با استفاده از پی‌اچ‌پی
 
 ### امکانات
-- [x]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضافه کردن مطلب
-- [x] &nbsp;&nbsp;&nbsp; ویرایش مطلب
-- [x] اضافه کردن کاربر جدید
-- [x] ویرایش مشخصات کاربر
-- [x] ثبت نظر برای مطالب
-- [ ] ویرایش نظرات
-- [ ] تایید یا عدم تایید نظرات
+- [x] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضافه کردن مطلب
+- [x] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ویرایش مطلب
+- [x] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضافه کردن کاربر جدید
+- [x] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ویرایش مشخصات کاربر
+- [x] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ثبت نظر برای مطالب
+- [ ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ویرایش نظرات
+- [ ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; تایید یا عدم تایید نظرات
 
 ***وبلاگ در حال توسعه است و به مرور زمان امکانات آن اضافه می‌شود.***
 
