@@ -2,11 +2,8 @@
 ob_start();
 session_start();
 
-//for Auto loading classes
-require '../classes/Autoload.php';
-
 //connect to database
-define('DB_SERVER','127.0.0.1');
+define('DB_SERVER','localhost');
 define('DB_USER','root');
 define('DB_PASS','');
 define('DB_NAME','simple_blog');
@@ -21,5 +18,32 @@ try {
 //set timezone
 date_default_timezone_set('Asia/Tehran');
 
+//spl_autoload_register('my_autoloader');
+
+
+//load classes as needed
+function __autoload($class)
+{
+    $class = strtolower($class);
+
+    //if call from within /assets adjust the path
+    $classpath = 'classes/'.$class . '.php';
+    if ( file_exists($classpath)) {
+        require_once $classpath;
+    }
+
+    //if call from within admin adjust the path
+    $classpath = '../classes/'.$class . '.php';
+    if ( file_exists($classpath)) {
+        require_once $classpath;
+    }
+
+    //if call from within admin adjust the path
+    $classpath = '../../classes/'.$class . '.php';
+    if ( file_exists($classpath)) {
+        require_once $classpath;
+    }
+
+}
 
 $user = new class_user($db);

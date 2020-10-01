@@ -1,5 +1,5 @@
 <?php
-
+/*
 
 class Autoload
 {
@@ -25,3 +25,4 @@ class Autoload
 
 $loader = new Autoload();
 $loader->registerClass();
+*/
