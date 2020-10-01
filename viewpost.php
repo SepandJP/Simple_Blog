@@ -44,6 +44,140 @@ if ($thisPost['postID'] == '')
     echo '</div>';
     ?>
 
+<!--  comments section  -->
+
+<!-- add comment -->
+<!--  php code for validation and process new comment  -->
+    <?php
+
+    //if form has been submitted process it
+    if (isset($_POST['submit']))
+    {
+        function strMapFunction($v)
+        {
+            return strtok($v, '&');
+        }
+
+        $_POST = array_map('strMapFunction', $_POST);
+
+        //collect form data
+        extract($_POST);
+
+        //very basic validation
+        if ($commentName == '')
+        {
+            $error[] = 'Please enter the name.';
+        }
+
+        if ($commentEmail == '')
+        {
+            $error[] = 'Please enter the email.';
+        }
+
+        if ($commentText == '')
+        {
+            $error[] = 'Please enter the comment.';
+        }
+
+        /*
+        if no error has been set then
+        insert the data into the database
+        */
+        if (!isset($error))
+        {
+            try {
+                $commentDate = date('Y-m-d H:i:s');
+                $commentStatus = false;
+                $postID = $_GET['id'];
+
+                $sql = 'INSERT INTO blog_comments (commentName, commentEmail, commentText, commentDate, commentStatus, postID)
+                        value (:commentName, :commentEmail, :commentText, :commentDate, :commentStatus, :postID)';
+                $result = $db->prepare($sql);
+                $result->bindParam(':commentName', $commentName);
+                $result->bindParam(':commentEmail', $commentEmail);
+                $result->bindParam(':commentText', $commentText);
+                $result->bindParam(':commentDate', $commentDate);
+                $result->bindParam(':commentStatus', $commentStatus);
+                $result->bindParam(':postID', $postID);
+                $result->execute();
+
+                echo "Comment Submitted Successfully";
+            }
+
+            catch (PDOException $e)
+            {
+                echo $e->getMessage();
+            }
+        }
+
+
+        /*
+         * check for any errors
+         * if has been any errors
+         * display them
+        * */
+        if (isset($error))
+        {
+            foreach ($error as $err) {
+                echo '<p>'.$err.'</p>';
+            }
+        }
+    }
+
+    ?>
+
+<!--  add comment form  -->
+    <p>Share your thoughts about this post</p>
+<form method="post">
+    <label for="commentName">
+        <input type="text" name="commentName" id="commentName" placeholder="Name" value="<?php if (isset($error)){ echo $_POST['commentName'];}?>">
+        <br />
+    </label>
+
+    <label for="commentEmail">
+        <input type="email" name="commentEmail" id="commentEmail" placeholder="Email" value="<?php if (isset($error)){ echo $_POST['commentEmail'];}?>">
+        <br />
+    </label>
+
+    <label for="commentText">
+        <textarea name="commentText" id="commentText" placeholder="Comment"><?php if (isset($error)){ echo $_POST['commentText'];}?></textarea>
+        <br />
+    </label>
+
+    <input type="submit" name="submit" value="Add Comment">
+</form>
+
+<!-- show comments -->
+    <p>Comments</p>
+
+    <?php
+    try {
+        //show all comments of this post
+
+        $postID = $_GET['id'];
+        $commentStatus = true;
+
+        $sql = 'SELECT commentName, commentText, commentDate FROM blog_comments WHERE postID = :postID AND commentStatus = :commentStatus ORDER BY commentDate DESC';
+        $result = $db->prepare($sql);
+        $result->bindParam(':postID', $postID);
+        $result->bindParam(':commentStatus', $commentStatus);
+        $result->execute();
+
+        while ($comments = $result->fetch())
+        {
+            echo '<div>';
+                echo '<h4>'.$comments['commentName'].'</h4>';
+                echo '<p>'.date('jS F Y H:i:s', strtotime($comments['commentDate'])).'</p>';
+                echo '<p>'.$comments['commentText'].'</p>';
+            echo '</div>';
+        }
+    }
+
+    catch (PDOException $e)
+    {
+        $e->getMessage();
+    }
+    ?>
 
 </body>
 </html>
