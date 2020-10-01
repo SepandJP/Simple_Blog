@@ -6,7 +6,7 @@ It's a simple blog from scratch with PHP. This project is developing and soon ad
 یک وبلاگ ساده با استفاده از پی‌اچ‌پی
 
 ### امکانات
-- [x]  &nbsp;&nbsp;&nbsp; اضافه کردن مطلب
+- [x]  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اضافه کردن مطلب
 - [x] &nbsp;&nbsp;&nbsp; ویرایش مطلب
 - [x] اضافه کردن کاربر جدید
 - [x] ویرایش مشخصات کاربر
