@@ -33,7 +33,7 @@ echo '<h3>Comment is '.$_GET['action'].'</h3>';
     <table>
         <tr>
             <th>No</th>
-<!--            <th>Post Title</th>-->
+<!--        <th>Post Title</th>-->
             <th>Date & Time</th>
             <th>Name</th>
             <th>Email</th>
@@ -59,7 +59,7 @@ echo '<h3>Comment is '.$_GET['action'].'</h3>';
 
                 echo '<tr>';
                 echo '<td>'.++$counter.'</td>';
-//                echo '<td>'.'</td>';
+//              echo '<td>'.'</td>';
                 echo '<td>'.$comments['commentDate'].'</td>';
                 echo '<td>'.$comments['commentName'].'</td>';
                 echo '<td>'.$comments['commentEmail'].'</td>';
@@ -115,7 +115,7 @@ echo '<h3>Comment is '.$_GET['action'].'</h3>';
 
                 echo '<tr>';
                 echo '<td>'.++$counter.'</td>';
-//                echo '<td>'.'</td>';
+//              echo '<td>'.'</td>';
                 echo '<td>'.$comments['commentDate'].'</td>';
                 echo '<td>'.$comments['commentName'].'</td>';
                 echo '<td>'.$comments['commentEmail'].'</td>';
