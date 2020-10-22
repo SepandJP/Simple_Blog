@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+
+    <!-- meta tags -->
+        <?php include 'pages/head.html'?>
+
         <title>My first Blog</title>
         <link>
     </head>
@@ -24,10 +27,15 @@
                 while ($posts = $result->fetch())
                 {
                     echo '<div>';
-                        echo '<h1><a href="viewpost.php?id='.$posts['postID'].'">'.$posts['postTitle'].'</a></h1>';
+                    echo PHP_EOL;
+                        echo '<h2><a href="viewpost.php?id='.$posts['postID'].'">'.$posts['postTitle'].'</a></h2>';
+                        echo PHP_EOL;
                         echo '<p>'.$posts['postDesc'].'</p>';
+                        echo PHP_EOL;
                         echo '<p><a href="viewpost.php?id=>'.$posts['postID'].'">Read More...</a></p>';
-                    echo '</div>';
+                        echo PHP_EOL;
+                    echo "</div>";
+                    echo PHP_EOL;
                 }
             }
 
