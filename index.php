@@ -8,13 +8,22 @@
         <?php include 'pages/head.html'?>
 
         <title>My first Blog</title>
-        <link>
     </head>
 
     <body>
 
-        <h1>Simple Blog</h1>
-        <hr />
+        <header class="container mt-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 my-2">
+                    <a class="d-inline-block btn btn-secondary" href="admin/index.php">Admin Panel</a>
+                </div>
+                <h1 class="cil-sm-12 col-md-6 d-inline-block mt-2">Simple Blog</h1>
+            </div>
+                <hr />
+        </header>
+
+        <main class="container">
+            <div class="row">
 
         <?php
             try {
@@ -26,16 +35,17 @@
 
                 while ($posts = $result->fetch())
                 {
-                    echo '<div>';
-                    echo PHP_EOL;
-                        echo '<h2><a href="viewpost.php?id='.$posts['postID'].'">'.$posts['postTitle'].'</a></h2>';
-                        echo PHP_EOL;
-                        echo '<p>'.$posts['postDesc'].'</p>';
-                        echo PHP_EOL;
-                        echo '<p><a href="viewpost.php?id=>'.$posts['postID'].'">Read More...</a></p>';
-                        echo PHP_EOL;
+                    echo '<div class="col-sm-12 col-md-6 col-lg-4 mt-3">';
+                        echo '<div class="card">';
+                            echo '<h2 class="card-header"><a href="viewpost.php?id='.$posts['postID'].'">'.$posts['postTitle'].'</a></h2>';
+                            echo '<div class="card-body">';
+                                echo '<p class="card-text">'.htmlentities($posts['postDesc']).'</p>';
+                            echo '</div>';
+                            echo '<div class="card-footer">';
+                                echo '<a href="viewpost.php?id='.$posts['postID'].'" class="btn btn-primary">Read More...</a>';
+                            echo '</div>';
+                        echo '</div>';
                     echo "</div>";
-                    echo PHP_EOL;
                 }
             }
 
@@ -44,6 +54,12 @@
                echo $e->getMessage();
            }
         ?>
+            </div>
+        </main>
+
+        <!-- footer section-->
+        <!-- Bootstrap core JavaScript -->
+    <?php include "pages/footer.html"; ?>
 
     </body>
 </html>
