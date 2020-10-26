@@ -13,7 +13,10 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+
+    <!-- meta tags -->
+    <?php include 'pages/head.html'?>
+
     <title>Admin | </title>
 </head>
 
@@ -35,6 +38,10 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
         </ul>
     </nav>
 </div>
+
+<!-- footer section-->
+<!-- Bootstrap core JavaScript -->
+<?php include "pages/footer.html"; ?>
 
 </body>
 </html>
