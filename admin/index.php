@@ -12,7 +12,10 @@ if(!$user->is_logged_in())
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+
+    <!-- meta tags -->
+    <?php include '../pages/head.html'?>
+
     <title> Posts</title>
 </head>
 
@@ -20,3 +23,11 @@ if(!$user->is_logged_in())
 
 <!-- add navigation menu -->
 <?php include 'menu.php'; ?>
+
+
+
+<!-- footer section-->
+<!-- Bootstrap core JavaScript -->
+<?php include "../pages/footer.html"; ?>
+
+</body>
