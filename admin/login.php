@@ -13,14 +13,18 @@ if ($user->is_logged_in())
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+
+    <!-- meta tags -->
+    <?php include '../pages/head.html'?>
+
     <title>Admin Logon</title>
 </head>
 
 <body>
 
-<div id="login">
+<div id="login" class="container d-flex justify-content-center flex-column">
 
+    <div class="clo-lg-6 d-flex justify-content-center mt-5">
 
     <?php
 
@@ -41,22 +45,40 @@ if ($user->is_logged_in())
         else
         {
             $message = 'Wrong username or password';
-            echo "<p>$message</p>";
+            ?>
+
+            <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <span class="d-flex justify-content-center"><?=$message?></span>
+            </div>
+
+        <?php
         }
     }
     ?>
 
-    <form action="" method="post">
-        <label for="inAdUser">Usename
-            <input id="inAdUser" type="text" name="username">
-        </label>
-        <label for="inAdPass">Password
-            <input id="inAdPass" type="password" name="password">
-        </label>
-        <input type="submit" name="submit" value="Login">
-    </form>
+    </div>
+
+    <div class="d-flex justify-content-center">
+    <div class="jumbotron">
+        <form action="<?php // todo separate php section ?>" method="post">
+            <div class="form-group">
+                <label for="inAdUser">Usename</label>
+                    <input id="inAdUser" class="form-control" type="text" name="username">
+            </div>
+            <div class="form-group">
+                <label for="inAdPass">Password</label>
+                    <input id="inAdPass" class="form-control" type="password" name="password">
+            </div>
+            <input class="btn btn-primary" type="submit" name="submit" value="Login">
+        </form>
+    </div>
+    </div>
 
 </div>
+
+<!-- Bootstrap core JavaScript -->
+<?php include "../pages/footer.html"; ?>
 
 </body>
 </html>
