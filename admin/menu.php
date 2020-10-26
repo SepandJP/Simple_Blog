@@ -1,47 +1,26 @@
-<?php
-//include config
-require_once('../includes/config.php');
-
-//if not logged in redirect to login page
-if(!$user->is_logged_in()){ header('Location: login.php'); }
-?>
-
-<!--
-    navigation menu
-    include in all admin panel pages
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <!-- meta tags -->
-    <?php include '../pages/head.html'?>
-
-    <title>Admin | </title>
-</head>
-
-<body>
-
 <header>
     <!--  show user name  -->
-<!--    <p>Logged in as --><?//=$_SESSION['username'];?><!--</p>-->
+<!--    <p>Logged in as --><?php //=$_SESSION['username'];?><!--</p>-->
 </header>
 
-<div>
+<div class="col-2">
     <nav>
-        <ul>
-            <li><a href="index.php">Main</a></li>
-            <li><a href="posts.php">Posts</a></li>
-            <li><a href="users.php">Users</li>
-            <li><a href="../">View Blog</a></li>
-            <li><a href="logout.php">Log out</a></li>
+        <ul class="nav flex-column">
+            <li class="nav-item active m-1">
+                <a href="index.php" class="nav-link btn btn-primary">Main</a>
+            </li>
+            <li class="nav-item m-1">
+                <a href="posts.php" class="nav-link btn btn-primary">Posts</a>
+            </li>
+            <li class="nav-item m-1">
+                <a href="users.php" class="nav-link btn btn-primary">Users</a>
+            </li>
+            <li class="nav-item m-1">
+                <a href="../" class="nav-link btn btn-primary">View Blog</a>
+            </li>
+            <li class="nav-item m-1">
+                <a href="logout.php" class="nav-link btn btn-primary">Log out</a>
+            </li>
         </ul>
     </nav>
 </div>
-
-<!-- footer section-->
-<!-- Bootstrap core JavaScript -->
-<?php include "../pages/footer.html"; ?>
-
-</body>
-</html>
