@@ -25,11 +25,16 @@ if (isset($_GET['delPost']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+
+    <!-- meta tags -->
+    <?php include '../pages/head.html'?>
+
     <title>Admin | Posts</title>
 </head>
 
 <body>
+
+<div class="row container-fluid">
 
 <!-- add navigation menu -->
 <?php include 'menu.php';
@@ -42,9 +47,12 @@ if (isset($_GET['action']))
 }
 ?>
 
-<p><a href="add_post.php">Add new Post</a></p>
+<!--<p><a href="add_post.php">Add new Post</a></p>-->
 
-<div>
+<div class="col-sm-10">
+
+    <h1 class="display-4">Posts</h1>
+
     <table>
         <tr>
             <th>Title</th>
@@ -69,8 +77,8 @@ if (isset($_GET['action']))
                 ?>
 
                 <td>
-                    <a href="edit_post.php?id=<?php echo $posts['postID'];?>">Edit</a>
-                    <a href="javascript:delPost('<?php echo $posts['postID'];?>','<?php echo $posts['postTitle'];?>')">Delete</a>
+                    <a class="btn btn-warning" href="edit_post.php?id=<?php echo $posts['postID'];?>">Edit</a>
+                    <a class="btn btn-danger" href="javascript:delPost('<?php echo $posts['postID'];?>','<?php echo $posts['postTitle'];?>')">Delete</a>
                 </td>
 
         <?php
@@ -87,6 +95,7 @@ if (isset($_GET['action']))
     </table>
 </div>
 
+</div>
 
 <script type="text/javascript">
     function delPost(id, title) {
@@ -96,6 +105,11 @@ if (isset($_GET['action']))
         }
     }
 </script>
+
+
+<!-- footer section-->
+<!-- Bootstrap core JavaScript -->
+<?php include "../pages/footer.html"; ?>
 
 </body>
 </html>
