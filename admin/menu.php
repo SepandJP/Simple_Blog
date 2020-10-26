@@ -15,7 +15,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 <head>
 
     <!-- meta tags -->
-    <?php include 'pages/head.html'?>
+    <?php include '../pages/head.html'?>
 
     <title>Admin | </title>
 </head>
@@ -41,7 +41,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 <!-- footer section-->
 <!-- Bootstrap core JavaScript -->
-<?php include "pages/footer.html"; ?>
+<?php include "../pages/footer.html"; ?>
 
 </body>
 </html>
