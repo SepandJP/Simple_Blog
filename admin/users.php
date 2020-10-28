@@ -30,11 +30,15 @@ if (isset($_GET['delUser']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+
+    <!-- meta tags -->
+    <!-- add Bootstrap stylesheet -->
+    <?php include '../pages/head.html'?>
+
     <title>Admin | Users</title>
 </head>
 
-<body>
+<body class="bg-dark">
 
 <?php include 'menu.php';
 
