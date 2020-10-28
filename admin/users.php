@@ -40,6 +40,8 @@ if (isset($_GET['delUser']))
 
 <body class="bg-dark">
 
+<div class="container-fluid row m-0 p-0">
+
 <?php include 'menu.php';
 
 //show message from add / edit page
@@ -50,7 +52,7 @@ if (isset($_GET['action']))
 ?>
 
 
-<div>
+<div class="col-sm-9 col-lg-10">
     <table>
         <tr>
             <th>ID</th>
@@ -101,9 +103,11 @@ catch (PDOException $e)
 ?>
 
     </table>
-</div>
 
 <a href="add_user.php">Add User</a>
+
+</div>
+</div>
 
 <!-- footer section-->
 <!-- Bootstrap core JavaScript -->
