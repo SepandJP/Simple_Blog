@@ -32,9 +32,9 @@ if (isset($_GET['delPost']))
     <title>Admin | Posts</title>
 </head>
 
-<body>
+<body class="bg-dark">
 
-<div class="row container-fluid">
+<div class="container-fluid row m-0 p-0">
 
 <!-- add navigation menu -->
 <?php include 'menu.php';
@@ -49,18 +49,21 @@ if (isset($_GET['action']))
 
 <!--<p><a href="add_post.php">Add new Post</a></p>-->
 
-<div class="col-sm-10">
+<div class="col-sm-9 col-lg-10">
 
-    <h1 class="display-4">Posts</h1>
+    <h1 class="display-4 text-white">Posts</h1>
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Action</th>
-        </tr>
+    <table class="table table-light table-striped table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
 
+        <tbody>
         <?php
         try {
             $sql = "SELECT * FROM blog_posts ORDER BY postID DESC";
@@ -76,9 +79,13 @@ if (isset($_GET['action']))
                 echo '<td>'.date('jS M Y', strtotime($posts['postDate'])).'</td>';
                 ?>
 
-                <td>
-                    <a class="btn btn-warning" href="edit_post.php?id=<?php echo $posts['postID'];?>">Edit</a>
-                    <a class="btn btn-danger" href="javascript:delPost('<?php echo $posts['postID'];?>','<?php echo $posts['postTitle'];?>')">Delete</a>
+                <td class="d-inline-flex">
+                    <a class="mr-1" href="edit_post.php?id=<?php echo $posts['postID'];?>">
+                        <span class="btn btn-warning">Edit</span>
+                    </a>
+                    <a class="ml-1" href="javascript:delPost('<?php echo $posts['postID'];?>','<?php echo $posts['postTitle'];?>')">
+                        <span class="btn btn-danger">Delete</span>
+                    </a>
                 </td>
 
         <?php
@@ -91,6 +98,7 @@ if (isset($_GET['action']))
             echo $e->getMessage();
         }
         ?>
+        </tbody>
 
     </table>
 </div>
@@ -105,7 +113,6 @@ if (isset($_GET['action']))
         }
     }
 </script>
-
 
 <!-- footer section-->
 <!-- Bootstrap core JavaScript -->
