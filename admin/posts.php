@@ -54,12 +54,12 @@ if (isset($_GET['action']))
     <h1 class="display-4 text-white">Posts</h1>
 
     <table class="table table-light table-striped table-hover">
-        <thead class="thead-light">
+        <thead class="thead-light text-center">
             <tr>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Date</th>
-                <th class="text-center">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
 
