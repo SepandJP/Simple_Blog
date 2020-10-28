@@ -105,6 +105,10 @@ catch (PDOException $e)
 
 <a href="add_user.php">Add User</a>
 
+<!-- footer section-->
+<!-- Bootstrap core JavaScript -->
+<?php include "../pages/footer.html"; ?>
+
 <script type="text/javascript">
     function delUser(id, title) {
         if (confirm("Are you sure you want to delete '" + title + "'"))
