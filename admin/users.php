@@ -53,13 +53,18 @@ if (isset($_GET['action']))
 
 
 <div class="col-sm-9 col-lg-10">
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
-        </tr>
+
+    <h1 class="display-4 text-white">Users</h1>
+
+    <table class="table table-light table-striped table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
 
 <?php
 
@@ -82,7 +87,7 @@ try {
         if id=1 dont show delete
         -->
         <td>
-            <a href="edit_user.php?id=<?php echo $members['memberID'];?>">Edit</a>
+            <a href="edit_user.php?id=<?php echo $members['memberID'];?>"><span class="btn btn-warning">Edit</span></a>
             <?php
                 if ($members['memberID'] != 1)
             { ?>
@@ -104,7 +109,7 @@ catch (PDOException $e)
 
     </table>
 
-<a href="add_user.php">Add User</a>
+    <a href="add_user.php"><span class="btn btn-success">Add User</span></a>
 
 </div>
 </div>
