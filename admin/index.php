@@ -16,18 +16,21 @@ if(!$user->is_logged_in())
     <!-- meta tags -->
     <?php include '../pages/head.html'?>
 
-    <title> Posts</title>
+    <title> Admin Panel </title>
 </head>
 
-<body>
+<body class="container-fluid bg-dark">
 
 <!-- add navigation menu -->
 <?php include 'menu.php'; ?>
 
 
+<div class="fixed-bottom">
 
 <!-- footer section-->
 <!-- Bootstrap core JavaScript -->
 <?php include "../pages/footer.html"; ?>
+
+</div>
 
 </body>
