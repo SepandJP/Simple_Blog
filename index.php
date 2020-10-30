@@ -4,8 +4,14 @@
 <html lang="en">
     <head>
 
-    <!-- meta tags -->
-        <?php include 'pages/head.html'?>
+        <!-- meta tags -->
+        <meta name="author" content="Sepand JamshidPour">
+        <meta name="description" content="A Simple Blog with PHP and Bootstrap">
+        <meta name="keywords" content="html, css, php, Bootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" type="text/css" href="files/stylesheets/bootstrap/bootstrap.min.css">
 
         <title>My first Blog</title>
     </head>
@@ -57,9 +63,19 @@
             </div>
         </main>
 
-        <!-- footer section-->
-        <!-- Bootstrap core JavaScript -->
-    <?php include "pages/footer.html"; ?>
+        <!--footer section-->
+
+        <footer class="py-5 bg-secondary">
+            <div class="container text-center text-white">
+                <p>This weblog is for practice the PHP</p>
+                <p>Sepand JamshidPour | 2020</p>
+            </div>
+        </footer>
+
+        <!--add Bootstrap and jQuery JavaScript files-->
+        <script type="text/javascript" rel="script" src="files/scripts/bootstrap/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" rel="script" src="files/scripts/bootstrap/bootstrap.min.js"></script>
+
 
     </body>
 </html>
