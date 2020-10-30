@@ -42,17 +42,24 @@ if (isset($_GET['delUser']))
 
 <div class="container-fluid row m-0 p-0">
 
-<?php include 'menu.php';
+<?php include 'menu.php'; ?>
 
+<div class="col-sm-9 col-lg-10">
+
+    <?php
 //show message from add / edit page
 if (isset($_GET['action']))
 {
-    echo '<h3>User '.$_GET['action'].' </h3>';
+    echo '<div class="mt-3 alert alert-success alert-dismissible fade show">';
+    echo '<span>User '.$_GET['action'].' </span>';
+    echo ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>';
+    echo '</div>';
 }
 ?>
 
 
-<div class="col-sm-9 col-lg-10">
 
     <h1 class="display-4 text-white">Users</h1>
 
@@ -91,7 +98,7 @@ try {
             <?php
                 if ($members['memberID'] != 1)
             { ?>
-              | <a href="javascript:delUser(<?php echo $members['memberID'];?>,'<?php echo $members['username'];?>')">Delete</a>
+              <a href="javascript:delUser(<?php echo $members['memberID'];?>,'<?php echo $members['username'];?>')"><span class="btn btn-danger">Delete</span></a>
             <?php } ?>
         </td>
 
