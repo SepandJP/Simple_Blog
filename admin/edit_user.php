@@ -12,7 +12,7 @@ if(!$user->is_logged_in()){
 <html lang="en">
 <head>
     <!--  meta tags and include Bootstrap stylesheet  -->
-    <?php include '../pages/footer.html';?>
+    <?php include '../pages/head.html';?>
     <title>Admin | Edit User</title>
 </head>
 
@@ -164,6 +164,9 @@ catch (PDOException $e)
         <input type="submit" name="submit" value="Update User">
     </form>
 </div>
+
+<!-- JavaScript files -->
+<?php include '../pages/footer.html';?>
 
 </body>
 </html>
