@@ -101,6 +101,9 @@ if (isset($_GET['action']))
         </tbody>
 
     </table>
+
+    <a href="add_post.php" class="mb-5 btn btn-info">Add New Post</a>
+
 </div>
 
 </div>
