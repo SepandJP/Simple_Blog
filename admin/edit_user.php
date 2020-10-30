@@ -11,7 +11,8 @@ if(!$user->is_logged_in()){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <!--  meta tags and include Bootstrap stylesheet  -->
+    <?php include '../pages/footer.html';?>
     <title>Admin | Edit User</title>
 </head>
 
