@@ -12,17 +12,20 @@ if(!$user->is_logged_in())
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <!--  meta tags and include Bootstrap stylesheet  -->
+    <?php include '../pages/head.html';?>
     <title>Admin | Add User</title>
 </head>
 
-<body>
+<body class="bg-dark">
+
+<div class="container-fluid row m-0 p-0">
 
 <?php include 'menu.php';?>
 
-<p><a href="users.php">User Admin Index</a></p>
+    <div class="col-sm-9 col-lg-10">
 
-<h2>Add New User</h2>
+<h1 class="text-white display-4">Add New User</h1>
 
 <?php
 
@@ -89,32 +92,52 @@ if (isset($_POST['submit'])) {
 if (isset($error))
 {
     foreach ($error as $err) {
-        echo '<p>'.$err.'</p>';
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+        echo '<span>'.$err.'</span>';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>';
+        echo '</div>';
     }
 }
 ?>
 
-<div>
+<div class="jumbotron">
     <form method="post">
-        <label for="memberUserName">
-            <input type="text" name="username" id="memberUserName" placeholder="Username" value="<?php if (isset($error)){ echo $_POST['username'];}?>">
-        </label>
 
-        <label for="memberEmail">
-            <input type="email" name="email" id="memberEmail" placeholder="Email" value="<?php if (isset($error)){ echo $_POST['email'];}?>"
-        </label>
+        <div class="form-group">
+            <label for="memberUserName">
+                <input class="form-control" type="text" name="username" id="memberUserName" placeholder="Username" value="<?php if (isset($error)){ echo $_POST['username'];}?>">
+            </label>
+        </div>
 
-        <label for="memberPassword">
-            <input type="password" name="password" id="memberPassword" placeholder="Password" value="<?php if (isset($error)){ echo $_POST['password'];}?>">
-        </label>
+        <div class="form-group">
+            <label for="memberEmail">
+                <input class="form-control" type="email" name="email" id="memberEmail" placeholder="Email" value="<?php if (isset($error)){ echo $_POST['email'];}?>"
+            </label>
+        </div>
 
-        <label for="memberPasswordConfirm">
-            <input type="password" name="passwordConfirm" id="memberPasswordConfirm" placeholder="Password Confirm" value="<?php if (isset($error)){ echo $_POST['passwordConfirm'];}?>">
-        </label>
+        <div class="form-group">
+            <label for="memberPassword">
+                <input class="form-control" type="password" name="password" id="memberPassword" placeholder="Password" value="<?php if (isset($error)){ echo $_POST['password'];}?>">
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="memberPasswordConfirm">
+                <input class="form-control" type="password" name="passwordConfirm" id="memberPasswordConfirm" placeholder="Password Confirm" value="<?php if (isset($error)){ echo $_POST['passwordConfirm'];}?>">
+            </label>
+        </div>
 
         <input type="submit" name="submit" value="Add User">
     </form>
 </div>
+
+    </div>
+</div>
+
+<!-- JavaScript files -->
+<?php include '../pages/footer.html';?>
 
 </body>
 </html>
