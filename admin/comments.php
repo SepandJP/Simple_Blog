@@ -12,36 +12,54 @@ if(!$user->is_logged_in())
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- meta tags -->
+    <!-- add Bootstrap stylesheet -->
+    <?php include '../pages/head.html'?>
+
     <title>Admin | comments</title>
 </head>
 
-<body>
+<body class="bg-dark">
+
+<div class="container-fluid row m-0 p-0">
 
 <!-- add navigation menu -->
-<?php include 'menu.php';
+<?php include 'menu.php'; ?>
 
+<div class="col-sm-9 col-lg-10">
+
+    <?php
 //show message from add / edit page
 if (isset($_GET['action']))
 {
-echo '<h3>Comment is '.$_GET['action'].'</h3>';
+    echo '<div class="mt-3 alert alert-success alert-dismissible fade show" role="alert">';
+    echo '<span>Comment is '.$_GET['action'].'</span>';
+    echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+    echo '<span aria-hidden="true">&times;</span>';
+    echo '</button>';
+    echo '</div>';
 }
 ?>
 
-<h2>Un-Approved Comments</h2>
+<h2 class="display-4 text-white">Un-Approved Comments</h2>
 
 <div>
-    <table>
-        <tr>
-            <th>No</th>
-<!--        <th>Post Title</th>-->
-            <th>Date & Time</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Comment</th>
-            <th>Action</th>
-<!--            <th>Preview</th>-->
-        </tr>
+    <table class="table table-light table-striped table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>No</th>
+    <!--        <th>Post Title</th>-->
+                <th>Date & Time</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Action</th>
+    <!--            <th>Preview</th>-->
+            </tr>
+        </thead>
 
+        <tbody>
             <!--    show un-approved comments    -->
         <?php
         try
@@ -65,9 +83,8 @@ echo '<h3>Comment is '.$_GET['action'].'</h3>';
                 echo '<td>'.$comments['commentEmail'].'</td>';
                 echo '<td>'.$comments['commentText'].'</td>';
                 echo '<td>';
-                echo '<a href="approveComment.php?id='.$commentId.'">Approve</a>';
-                echo ' | ';
-                echo '<a href="deleteComment.php?id='.$commentId.'">Delete</a>';                echo '</td>';
+                echo '<a href="approveComment.php?id='.$commentId.'"><span class="mr-1 btn btn-success">Approve</span></a>';
+                echo '<a href="deleteComment.php?id='.$commentId.'"><span class="ml-1 btn btn-danger">Delete</span></a>';                echo '</td>';
                 echo '</tr>';
             }
         }
@@ -77,27 +94,31 @@ echo '<h3>Comment is '.$_GET['action'].'</h3>';
             echo $e->getMessage();
         }
         ?>
+        </tbody>
     </table>
 </div>
 
 <br />
 
         <!-- show approved comments -->
-<h2>Approved Comments</h2>
+<h2 class="display-4 text-white">Approved Comments</h2>
 
 <div>
-    <table>
-        <tr>
-            <th>No</th>
-            <!--            <th>Post Title</th>-->
-            <th>Date & Time</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Comment</th>
-            <th>Action</th>
-            <!--            <th>Preview</th>-->
-        </tr>
+    <table class="table table-light table-striped table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>No</th>
+                <!--            <th>Post Title</th>-->
+                <th>Date & Time</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Action</th>
+                <!--            <th>Preview</th>-->
+            </tr>
+        </thead>
 
+        <tbody>
         <?php
         //        show approved comment
         try
@@ -121,9 +142,8 @@ echo '<h3>Comment is '.$_GET['action'].'</h3>';
                 echo '<td>'.$comments['commentEmail'].'</td>';
                 echo '<td>'.$comments['commentText'].'</td>';
                 echo '<td>';
-                echo '<a href="disApproveComment.php?id='.$commentId.'">Un-Approve</a>';
-                echo ' | ';
-                echo '<a href="deleteComment.php?id='.$commentId.'">Delete</a>';
+                echo '<a href="disApproveComment.php?id='.$commentId.'"><span class="mr-1 btn btn-warning">Un-Approve</span></a>';
+                echo '<a href="deleteComment.php?id='.$commentId.'"><span class="ml-1 btn btn-danger">Delete</span></a>';
                 echo '</td>';
                 echo '</tr>';
             }
@@ -134,8 +154,16 @@ echo '<h3>Comment is '.$_GET['action'].'</h3>';
             echo $e->getMessage();
         }
         ?>
+        </tbody>
     </table>
 </div>
+
+</div>
+</div>
+
+<!-- footer section-->
+<!-- Bootstrap core JavaScript -->
+<?php include "../pages/footer.html"; ?>
 
 </body>
 </html>
