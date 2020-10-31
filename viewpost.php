@@ -35,14 +35,22 @@ if ($thisPost['postID'] == '')
 
     <title>Blog - <?php echo $thisPost['postTitle'];?></title>
     </head>
-<body>
+<body class="bg-dark">
 
 
-    <h1>Blog</h1>
-    <hr />
-    <p><a href="./">Home</a></p>
+<div class="container">
 
+    <div class="pt-5">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">My Blog</li>
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="#"><?=$thisPost['postTitle']?></a></li>
+        </ul>
+    </div>
 
+<!-- main content -->
+<!-- show post-->
+    <main class="container bg-light py-3 my-5">
     <?php
     echo '<div>';
     echo '<h1>'.$thisPost['postTitle'].'</h1>';
@@ -50,6 +58,9 @@ if ($thisPost['postID'] == '')
     echo '<p>'.$thisPost['postCont'].'</p>';
     echo '</div>';
     ?>
+    </main>
+<!-- end post -->
+
 
 <!--  comments section  -->
 
@@ -107,8 +118,6 @@ if ($thisPost['postID'] == '')
                 $result->bindParam(':commentStatus', $commentStatus);
                 $result->bindParam(':postID', $postID);
                 $result->execute();
-
-                echo "Comment Submitted Successfully";
             }
 
             catch (PDOException $e)
@@ -116,75 +125,121 @@ if ($thisPost['postID'] == '')
                 echo $e->getMessage();
             }
         }
-
-
-        /*
-         * check for any errors
-         * if has been any errors
-         * display them
-        * */
-        if (isset($error))
-        {
-            foreach ($error as $err) {
-                echo '<p>'.$err.'</p>';
-            }
-        }
     }
 
     ?>
 
 <!--  add comment form  -->
-    <p>Share your thoughts about this post</p>
-<form method="post">
-    <label for="commentName">
-        <input type="text" name="commentName" id="commentName" placeholder="Name" value="<?php if (isset($error)){ echo $_POST['commentName'];}?>">
-        <br />
-    </label>
+    <div class="bg-light rounded">
 
-    <label for="commentEmail">
-        <input type="email" name="commentEmail" id="commentEmail" placeholder="Email" value="<?php if (isset($error)){ echo $_POST['commentEmail'];}?>">
-        <br />
-    </label>
+    <h4 class="font-italic font-weight-bold card-header border-bottom-0">Share your thoughts about this post:</h4>
 
-    <label for="commentText">
-        <textarea name="commentText" id="commentText" placeholder="Comment"><?php if (isset($error)){ echo $_POST['commentText'];}?></textarea>
-        <br />
-    </label>
+        <?php
+            /*
+             * check for any errors
+             * if has been any errors
+             * display them
+            * */
+            if (isset($error))
+            {
+                echo '<div class="container-fluid m-4">';
+                foreach ($error as $err) {
+                    echo '<div class="alert alert-danger alert-dismissible fade show col-sm-7 col-md-5 col-lg-4" role="alert">';
+                    echo '    <span>'.$err.'</span>';
+                    echo '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                    echo '        <span aria-hidden="true">&times;</span>';
+                    echo '    </button>';
+                    echo '</div>';
+                }
+                echo '</div>';
+            }
 
-    <input type="submit" name="submit" value="Add Comment">
-</form>
+            else
+            {
+                $message = "Comment Submitted Successfully.";
+                echo '<div class="container-fluid m-4">';
+
+                    echo '<div class="alert alert-success alert-dismissible fade show col-sm-7 col-md-5 col-lg-4" role="alert">';
+                    echo '    <span>'.$message.'</span>';
+                    echo '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                    echo '        <span aria-hidden="true">&times;</span>';
+                    echo '    </button>';
+                    echo '</div>';
+
+                echo '</div>';
+            }
+        ?>
+
+
+        <form method="post" class="card-body">
+            <div class="row ml-1">
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="commentName">Name</label>
+                        <input class="form-control" type="text" name="commentName" id="commentName" value="<?php if (isset($error)){ echo $_POST['commentName'];}?>">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="commentEmail">Email</label>
+                        <input class="form-control" type="email" name="commentEmail" id="commentEmail" value="<?php if (isset($error)){ echo $_POST['commentEmail'];}?>" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-8">
+                <div class="form-group">
+                    <label for="commentText">Comment</label>
+                    <textarea class="form-control" name="commentText" id="commentText" rows="5"><?php if (isset($error)){ echo $_POST['commentText'];}?></textarea>
+                </div>
+            </div>
+
+            <div class="form-group ml-3">
+                <input type="submit" name="submit" value="Add Comment" class="btn btn-outline-success">
+            </div>
+        </form>
+    </div>
 
 <!-- show comments -->
-    <p>Comments</p>
+    <section class="bg-light my-5 rounded">
+        <h3 class="font-italic font-weight-bold card-header border-bottom-0">Comments</h3>
 
-    <?php
-    try {
-        //show all comments of this post
+        <div class="card-body">
+        <?php
+        try {
+            //show all comments of this post
 
-        $postID = $_GET['id'];
-        $commentStatus = true;
+            $postID = $_GET['id'];
+            $commentStatus = true;
 
-        $sql = 'SELECT commentName, commentText, commentDate FROM blog_comments WHERE postID = :postID AND commentStatus = :commentStatus ORDER BY commentDate DESC';
-        $result = $db->prepare($sql);
-        $result->bindParam(':postID', $postID);
-        $result->bindParam(':commentStatus', $commentStatus);
-        $result->execute();
+            $sql = 'SELECT commentName, commentText, commentDate FROM blog_comments WHERE postID = :postID AND commentStatus = :commentStatus ORDER BY commentDate DESC';
+            $result = $db->prepare($sql);
+            $result->bindParam(':postID', $postID);
+            $result->bindParam(':commentStatus', $commentStatus);
+            $result->execute();
 
-        while ($comments = $result->fetch())
-        {
-            echo '<div>';
-                echo '<h4>'.$comments['commentName'].'</h4>';
-                echo '<p>'.date('jS F Y H:i:s', strtotime($comments['commentDate'])).'</p>';
-                echo '<p>'.$comments['commentText'].'</p>';
-            echo '</div>';
+            while ($comments = $result->fetch())
+            {
+                echo '<div class="jumbotron p-3 pl-5">';
+                    echo '    <span class="d-block font-weight-bold">'.$comments['commentName'].'</span>';
+                    echo '    <small class="d-block font-weight-light">'.date('jS F Y H:i:s', strtotime($comments['commentDate'])).'</small>';
+                    echo '    <p class="m-2">'.$comments['commentText'].'</p>';
+                echo '</div>';
+            }
         }
-    }
 
-    catch (PDOException $e)
-    {
-        $e->getMessage();
-    }
-    ?>
+        catch (PDOException $e)
+        {
+            $e->getMessage();
+        }
+        ?>
+        </div>
+    </section>
+</div>
+<!-- end content -->
+
 
     <!--footer section-->
 
