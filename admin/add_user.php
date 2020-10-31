@@ -129,7 +129,7 @@ if (isset($error))
             </label>
         </div>
 
-        <input type="submit" name="submit" value="Add User">
+        <input class="btn btn-outline-success" type="submit" name="submit" value="Add User">
     </form>
 </div>
 

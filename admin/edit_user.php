@@ -169,7 +169,7 @@ catch (PDOException $e)
             </label>
         </div>
 
-        <input type="submit" name="submit" value="Update User">
+        <input class="btn btn-outline-success" type="submit" name="submit" value="Update User">
     </form>
 </div>
 
