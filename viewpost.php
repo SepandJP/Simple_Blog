@@ -140,34 +140,33 @@ if ($thisPost['postID'] == '')
              * if has been any errors
              * display them
             * */
-            if (isset($error))
-            {
+        if (isset($_POST['submit']))
+        {
+            if (isset($error)) {
                 echo '<div class="container-fluid m-4">';
                 foreach ($error as $err) {
                     echo '<div class="alert alert-danger alert-dismissible fade show col-sm-7 col-md-5 col-lg-4" role="alert">';
-                    echo '    <span>'.$err.'</span>';
+                    echo '    <span>' . $err . '</span>';
                     echo '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
                     echo '        <span aria-hidden="true">&times;</span>';
                     echo '    </button>';
                     echo '</div>';
                 }
                 echo '</div>';
-            }
-
-            else
-            {
+            } else {
                 $message = "Comment Submitted Successfully.";
                 echo '<div class="container-fluid m-4">';
 
-                    echo '<div class="alert alert-success alert-dismissible fade show col-sm-7 col-md-5 col-lg-4" role="alert">';
-                    echo '    <span>'.$message.'</span>';
-                    echo '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-                    echo '        <span aria-hidden="true">&times;</span>';
-                    echo '    </button>';
-                    echo '</div>';
+                echo '<div class="alert alert-success alert-dismissible fade show col-sm-7 col-md-5 col-lg-4" role="alert">';
+                echo '    <span>' . $message . '</span>';
+                echo '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                echo '        <span aria-hidden="true">&times;</span>';
+                echo '    </button>';
+                echo '</div>';
 
                 echo '</div>';
             }
+        }
         ?>
 
 
