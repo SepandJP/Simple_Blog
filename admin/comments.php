@@ -81,7 +81,7 @@ if (isset($_GET['action']))
                 echo '<td>'.$comments['commentDate'].'</td>';
                 echo '<td>'.$comments['commentName'].'</td>';
                 echo '<td>'.$comments['commentEmail'].'</td>';
-                echo '<td>'.$comments['commentText'].'</td>';
+                echo '<td width="50%">'.$comments['commentText'].'</td>';
                 echo '<td>';
                 echo '<a href="approveComment.php?id='.$commentId.'"><span class="mr-1 btn btn-success">Approve</span></a>';
                 echo '<a href="deleteComment.php?id='.$commentId.'"><span class="ml-1 btn btn-danger">Delete</span></a>';                echo '</td>';
@@ -140,7 +140,7 @@ if (isset($_GET['action']))
                 echo '<td>'.$comments['commentDate'].'</td>';
                 echo '<td>'.$comments['commentName'].'</td>';
                 echo '<td>'.$comments['commentEmail'].'</td>';
-                echo '<td>'.$comments['commentText'].'</td>';
+                echo '<td width="45%">'.$comments['commentText'].'</td>';
                 echo '<td>';
                 echo '<a href="disApproveComment.php?id='.$commentId.'"><span class="mr-1 btn btn-warning">Un-Approve</span></a>';
                 echo '<a href="deleteComment.php?id='.$commentId.'"><span class="ml-1 btn btn-danger">Delete</span></a>';
