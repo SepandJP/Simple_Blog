@@ -12,11 +12,17 @@ if(!$user->is_logged_in()){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+
+    <!--  meta tags and include Bootstrap stylesheet  -->
+    <?php include '../pages/head.html';?>
+
     <title>Admin | New Post</title>
 </head>
 
-<body>
+<body class="bg-dark">
+
+<!-- menu & content -->
+<div class="container-fluid row m-0 p-0">
 
 <!-- navigation menu -->
 <?php
@@ -24,7 +30,10 @@ include 'menu.php';
 // todo delete <br> tags
 ?>
 
-<h1>Add New Post</h1>
+    <!--  main content  -->
+    <div class="col-sm-9 col-lg-10">
+
+    <h1 class="display-4 text-white">Add New Post</h1>
 
 <!--
     PHP code
@@ -36,6 +45,7 @@ include 'menu.php';
 if (isset($_POST['submit'])) {
     function strMapFunction($v)
     {
+        $v = htmlentities($v);
         return strtok($v, '&');
     }
 
@@ -90,55 +100,56 @@ if (isset($_POST['submit'])) {
     }
 }
 
-/*
- * check for any errors
- * if has been any errors
- * display them
- * */
-if (isset($error))
-{
-    foreach ($error as $err) {
-        echo '<p>'.$err.'</p>';
-    }
-}
 ?>
 
-<div>
+<div class="jumbotron">
+
+    <?php
+        /*
+    * check for any errors
+    * if has been any errors
+    * display them
+    * */
+        if (isset($error))
+        {
+            echo '<div class="container-fluid m-4">';
+            foreach ($error as $err) {
+                echo '<div class="alert alert-danger alert-dismissible fade show col-sm-7 col-md-5 col-lg-4" role="alert">';
+                echo '    <span>' . $err . '</span>';
+                echo '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                echo '        <span aria-hidden="true">&times;</span>';
+                echo '    </button>';
+                echo '</div>';
+            }
+            echo '</div>';
+        }
+    ?>
+
     <form method="post">
-        <label for="inTitle">Title
-            <br />
-            <input type="text" id="inTitle" name="postTitle" value="<?php if (isset($error)){ echo $_POST['postTitle'];}?>">
-        </label>
+        <div class="form-group">
+            <label for="inTitle">Title</label>
+            <input class="form-control" type="text" id="inTitle" name="postTitle" value="<?php if (isset($error)){ echo $_POST['postTitle'];}?>">
+        </div>
 
-        <br />
-        <br />
+        <div class="form-group">
+            <label for="inDesc">Description</label>
+            <textarea class="form-control" id="inDesc" name="postDesc" cols="60" rows="10"><?php if (isset($error)){ echo $_POST['postDesc'];}?></textarea>
+        </div>
 
-        <label for="inDesc">Description
-            <textarea id="inDesc" name="postDesc" cols="60" rows="10"><?php if (isset($error)){ echo $_POST['postDesc'];}?></textarea>
-        </label>
+        <div class="form-group">
+            <label for="inCont">Content</label>
+            <textarea class="form-control" id="inCont" name="postCont" cols="60" rows="10"><?php if (isset($error)){ echo $_POST['postCont'];}?></textarea>
+        </div>
 
-        <br />
-
-        <label>Content
-            <textarea id="inCont" name="postCont" cols="60" rows="10"><?php if (isset($error)){ echo $_POST['postCont'];}?></textarea>
-        </label>
-
-        <br />
-
-        <input type="submit" name="submit" value="Submit">
+        <input class="btn btn-outline-success" type="submit" name="submit" value="Submit">
     </form>
 </div>
 
+    </div>
+</div>
 
-<!-- text editor CDN -->
-<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
-    //<![CDATA[
-    bkLib.onDomLoaded(function() {
-        new nicEditor({fullPanel : true}).panelInstance('inDesc');
-        new nicEditor({fullPanel : true}).panelInstance('inCont');
-    });
-    //]]>
-</script>
+<!-- JavaScript files -->
+<?php include '../pages/footer.html';?>
 
 </body>
 </html>
