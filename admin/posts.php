@@ -37,19 +37,27 @@ if (isset($_GET['delPost']))
 <div class="container-fluid row m-0 p-0">
 
 <!-- add navigation menu -->
-<?php include 'menu.php';
-
-
-//show message from add / edit page
-if (isset($_GET['action']))
-{
-    echo '<h3>Post is '.$_GET['action'].'</h3>';
-}
-?>
+<?php include 'menu.php';?>
 
 <!--<p><a href="add_post.php">Add new Post</a></p>-->
 
 <div class="col-sm-9 col-lg-10">
+
+    <?php
+    //show message from add / edit page
+    if (isset($_GET['action']))
+    {
+        echo '<div class="mt-5">';
+        echo '<div class="alert alert-success alert-dismissible fade show col-sm-7 col-md-5 col-lg-4" role="alert">';
+        echo '<span>Post is '.$_GET['action'].'</span>';
+        echo '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+        echo '        <span aria-hidden="true">&times;</span>';
+        echo '    </button>';
+        echo '</div>';
+        echo '</div>';
+
+    }
+    ?>
 
     <h1 class="display-4 text-white">Posts</h1>
 
@@ -74,8 +82,8 @@ if (isset($_GET['action']))
             while ($posts = $result->fetch(PDO::FETCH_ASSOC))
             {
                 echo '<tr>';
-                echo '<td>'.$posts['postTitle'].'</td>';
-                echo '<td>'.$posts['postDesc'].'</td>';
+                echo '<td>'.htmlentities($posts['postTitle']).'</td>';
+                echo '<td width="50%">'.$posts['postDesc'].'</td>';
                 echo '<td>'.date('jS M Y', strtotime($posts['postDate'])).'</td>';
                 ?>
 
