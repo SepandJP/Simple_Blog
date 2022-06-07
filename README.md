@@ -12,9 +12,9 @@ It's a simple blog from scratch with PHP. This project is developing and soon ad
 <br />
 
 ### Online Viewing
-View of blog: &emsp; [Live Blog](http://sepand.ihostfull.com/simplePhpBlog/)
+View of blog: &emsp; [Blog](http://simpleblog.pcshared.com/)
 
-View of Admin Panel: [Admin Panel](http://sepand.ihostfull.com/simplePhpBlog/admin) <br />
+View of Admin Panel: [Admin Panel](http://simpleblog.pcshared.com/admin/login) <br />
 (for login, used below information) &emsp;
 
 ```
@@ -49,10 +49,10 @@ Password: demo
 <br />
 
 ### مشاهده آنلاین
-مشاهده وبلاگ: &emsp; [Live Blog](http://sepand.ihostfull.com/simplePhpBlog/)
+مشاهده وبلاگ: &emsp; [Live Blog](http://simpleblog.pcshared.com/)
 
 
-ورود به پنل مدیریت: &emsp; [Admin Panel](http://sepand.ihostfull.com/simplePhpBlog/admin) <br />
+ورود به پنل مدیریت: &emsp; [Admin Panel](http://simpleblog.pcshared.com/admin) <br />
 (برای ورود از اطلاعات زیر استفاده کنید)
 ```
 Username: demo
