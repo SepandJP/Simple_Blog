@@ -14,7 +14,7 @@ It's a simple blog from scratch with PHP. This project is developing and soon ad
 ### Online Viewing
 View of blog: &emsp; [Blog](http://simpleblog.pcshared.com/)
 
-View of Admin Panel: [Admin Panel](http://simpleblog.pcshared.com/admin/login) <br />
+View of Admin Panel: [Admin Panel](http://simpleblog.pcshared.com/admin/) <br />
 (for login, used below information) &emsp;
 
 ```
